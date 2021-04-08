@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.study
+testFramework: junit
+sourceLanguage: kotlin
+buildTool: gradle
+features: [app-name, gradle, http-client, junit, kotlin, kotlin-application, logback, netty-server, readme, shade, yaml]

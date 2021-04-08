@@ -1,0 +1,15 @@
+micronaut:
+  application:
+    name: micronautKotlinDojo
+  server:
+    port: 8090
+endpoints:
+  info:
+    enabled: true
+    sensitive: false
+  refresh:
+    enabled: true
+    sensitive: false
+  stop:
+    enabled: true
+    sensitive: false
