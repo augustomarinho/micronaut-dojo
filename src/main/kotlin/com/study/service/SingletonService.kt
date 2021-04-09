@@ -5,7 +5,7 @@ import javax.annotation.PostConstruct
 import javax.inject.Singleton
 
 @Singleton
-open class SingletonServiceImpl: SingletonService {
+class SingletonServiceImpl: SingletonService {
 
     private lateinit var value: String
 
