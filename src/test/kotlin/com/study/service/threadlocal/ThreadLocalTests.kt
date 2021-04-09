@@ -26,6 +26,7 @@ class ThreadLocalTests {
             executor.execute {
                 val correlationId = "abc" + r.nextInt(10000)
                 begin.start(correlationId)
+                println("correlationId: $correlationId\t\tfinish: ${finish.finish()}")
                 Assertions.assertEquals(correlationId, finish.finish())
             }
         }
