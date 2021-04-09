@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.allopen") version "1.4.10"
     id("com.github.johnrengelman.shadow") version "6.1.0"
     id("io.micronaut.application") version "1.2.0"
+    id("java")
 
     //JIB
     id 'com.google.cloud.tools.jib' version '0.9.6'
@@ -26,6 +27,11 @@ micronaut {
     }
 }
 
+// use JUnit 5 platform
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
     kapt platform("io.micronaut:micronaut-bom:$micronautVersion")
@@ -34,6 +40,7 @@ dependencies {
     kaptTest "io.micronaut:micronaut-inject-java"
 
     // Junit imports:
+    testImplementation "io.micronaut.test:micronaut-test-junit5"
     testRuntime "org.junit.jupiter:junit-jupiter-engine"
     testImplementation "org.junit.vintage:junit-vintage-engine"
     testImplementation "org.junit.jupiter:junit-jupiter-api"
@@ -56,14 +63,9 @@ dependencies {
     // https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder
     implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '6.6'
 
-    //Elastic Search
-    compile "io.micronaut.elasticsearch:micronaut-elasticsearch"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-
     //Management
     implementation("io.micronaut:micronaut-management")
 }
-
 
 application {
     mainClass.set("com.study.ApplicationKt")
@@ -77,11 +79,14 @@ tasks {
     compileKotlin {
         kotlinOptions {
             jvmTarget = "1.8"
+            // Will retain parameter names for Java reflection
+            javaParameters = true
         }
     }
     compileTestKotlin {
         kotlinOptions {
             jvmTarget = "1.8"
+            javaParameters = true
         }
     }
 }
