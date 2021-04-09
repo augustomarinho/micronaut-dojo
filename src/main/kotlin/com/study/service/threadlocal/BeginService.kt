@@ -4,12 +4,16 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class BeginService {
+class BeginServiceImpl : BeginService {
 
     @Inject
     lateinit var service: ThreadStateService
 
-    fun start(correlationId: String?) {
+    override fun start(correlationId: String?) {
         service.setCorrelationId(correlationId)
     }
+}
+
+interface BeginService {
+    fun start(correlationId: String?)
 }
