@@ -17,7 +17,7 @@ class HelloController constructor() {
     @Get
     @Produces(MediaType.TEXT_PLAIN)
     fun index(): String? {
-        logger.info("Request Hello Api Received", kv("myCustom", "Ola"))
+        logger.info("Request Hello Api Received", kv("myCustom", "Ola"), kv("outra", "coisa"))
         return "Hello"
     }
 }
